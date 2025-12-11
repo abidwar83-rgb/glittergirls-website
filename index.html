@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wars Food Corner | Order Online</title>
+    
+    <!-- Icons and Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ff4757; 
+            --secondary: #2f3542; 
+            --light: #f1f2f6;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--light); color: var(--secondary); scroll-behavior: smooth; }
+
+        /* HEADER */
+        header {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-transform: uppercase; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-menu a { text-decoration: none; color: var(--secondary); font-weight: 600; }
+        .mobile-toggle { display: none; font-size: 1.5rem; }
+
+        /* HERO */
+        .hero {
+            margin-top: 70px; height: 55vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 20px;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .btn { background: var(--primary); color: white; padding: 10px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; }
+
+        /* MENU */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .menu-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); }
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
+        .card-content { padding: 20px; }
+        .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+        .card-desc { font-size: 0.9rem; color: #7f8fa6; margin-bottom: 15px; }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; }
+        .price { font-size: 1.3rem; font-weight: 800; color: var(--secondary); }
+        .add-btn { background: var(--light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; }
+        .add-btn:hover { background: var(--primary); color: white; }
+
+        /* CART & FOOTER */
+        .float-cart { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 50px; cursor: pointer; display: flex; gap: 10px; align-items: center; box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4); z-index: 999; }
+        .cart-badge { background: white; color: var(--primary); padding: 2px 8px; border-radius: 10px; font-weight: bold; }
+        
+        footer { background: var(--secondary); color: white; padding: 40px 0; margin-top: 60px; text-align: center; }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-menu { display: none; } /* Simplified for mobile */
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><i class="fas fa-utensils"></i> Wars Food</div>
+        <nav class="nav-menu">
+            <a href="#menu">Menu</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <section class="hero">
+        <h1>Authentic Biryani &<br>Delicious Fast Food</h1>
+        <p>Housing Colony, Ompora, Budgam</p>
+        <br>
+        <a href="#menu" class="btn">View Menu</a>
+    </section>
+
+    <section class="container" id="menu">
+        <div class="section-header">
+            <h2>Our Menu</h2>
+        </div>
+
+        <div class="menu-grid">
+            
+            <!-- 1. Special Mutton Biryani -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80" alt="Mutton Biryani" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Special Mutton Biryani</h3>
+                    <p class="card-desc">Tender mutton chunks with aromatic basmati rice.</p>
+                    <div class="card-footer">
+                        <span class="price">₹250</span>
+                        <div class="add-btn" onclick="addToCart('Mutton Biryani', 250)"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Chicken Biryani -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80" alt="Chicken Biryani" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Chicken Biryani</h3>
+                    <p class="card-desc">Classic Kashmiri style chicken biryani.</p>
+                    <div class="card-footer">
+                        <span class="price">₹180</span>
+                        <div class="add-btn" onclick="addToCart('Chicken Biryani', 180)"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Chicken BBQ Pizza -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Pizza" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Chicken BBQ Pizza</h3>
+                    <p class="card-desc">Topped with grilled chicken, onions and cheese.</p>
+                    <div class="card-footer">
+                        <span class="price">₹280</span>
+                        <div class="add-btn" onclick="addToCart('Chicken BBQ Pizza', 280)"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Veggie Pizza -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Veg Pizza" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Veggie Delight Pizza</h3>
+                    <p class="card-desc">Fresh vegetables and mozzarella cheese.</p>
+                    <div class="card-footer">
+                        <span class="price">₹220</span>
+                        <div class="add-btn" onclick="addToCart('Veggie Pizza', 220)"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Zinger Burger -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Burger" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Zinger Burger</h3>
+                    <p class="card-desc">Crispy chicken fillet with spicy mayo.</p>
+                    <div class="card-footer">
+                        <span class="price">₹120</span>
+                        <div class="add-btn" onclick="addToCart('Zinger Burger', 120)"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Momos -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Momos" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Chicken Momos</h3>
+                    <p class="card-desc">Steamed dumplings with spicy red chutney.</p>
+                    <div class="card-footer">
+                        <span class="price">₹100</span>
+                        <div class="add-btn" onclick="addToCart('Chicken Momos', 100)"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>Wars Food Corner | Housing Colony, Ompora, Budgam</p>
+        <p>Call/WhatsApp: +91 88996 36191</p>
+    </footer>
+
+    <div class="float-cart" onclick="checkout()">
+        <i class="fas fa-shopping-bag"></i> Checkout <span class="cart-badge" id="count">0</span>
+    </div>
+
+    <script>
+        const PHONE_NUMBER = "918899636191"; // Your Number
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            document.getElementById('count').innerText = cart.length;
+            
+            // Animation
+            const btn = event.target.closest('.add-btn');
+            btn.style.background = "#27ae60";
+            setTimeout(() => { btn.style.background = ""; }, 500);
+        }
+
+        function checkout() {
+            if (cart.length === 0) { alert("Cart is empty!"); return; }
+            let msg = "Hello Wars Food! New Order:%0a%0a";
+            let total = 0;
+            let summary = {};
+            
+            cart.forEach(i => { summary[i.name] = (summary[i.name] || 0) + 1; total += i.price; });
+            
+            for (let item in summary) {
+                msg += ▪ ${item} x ${summary[item]}%0a;
+            }
+            msg += %0a*Total: ₹${total}*;
+            window.open(https://wa.me/${PHONE_NUMBER}?text=${msg}, '_blank');
+        }
+    </script>
+</body>
+</html>
